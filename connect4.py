@@ -65,6 +65,11 @@ def game(p1,p2):
             turn = 1
 
         printBoard()
+    if turn == 1:
+        print("winner: player", turn+1, "!!!!")
+    else:
+        print("winner: player", turn-1, "!!!!")
+    
     
         
 # makes sure no rules are being broke and determins if 
@@ -229,11 +234,22 @@ def AI(t):
     print("I will rule you")
 
 def rand(t):
-    print("Duhhhh")
+    global win
+    print( "player", t,"randome player")
+    print( "--------------------------------------------")
+    rulling = False
+    while rulling == False:
+        move = random.randint(0,6)
+        rulling = rules(move)
+    place(t,move)
+    win = checkWin(t, move)
+
+    
 
 def player(t):
     global win 
-
+    print( "player", t)
+    print( "--------------------------------------------")
     move = input("choose the colunb to drop your chip:") 
     move = int(move)-1
     rulling = False
